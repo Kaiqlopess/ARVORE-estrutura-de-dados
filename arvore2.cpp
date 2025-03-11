@@ -93,6 +93,7 @@ class Arvore{
 			
 			if(temp == NULL){
 				cout << "Item " << d << " nao encontado na arvore!" << endl;
+				return;
 			}
 			
 			
@@ -166,9 +167,34 @@ class Arvore{
             	
 				delete filho;
 				return;
-			}
-			
+			}		
 		}
+		
+		bool busca(int d){
+				if(raiz == NULL){
+					cout << "Arvore vazia" << endl;
+					return false;
+				}
+				
+				No* temp = raiz;
+				
+				while(temp != NULL && temp->dado != d){
+					if(d < temp->dado){
+						temp = temp->esquerda;
+					}else{
+						temp = temp->direita;
+					}
+				}
+				
+				if(temp == NULL){
+					cout << d << " nao encontrado" << endl;
+					return false;
+				}
+				
+				cout << temp->dado << " encontrado" << endl;
+				
+				return true;
+			    }
 };
 
 int main(int argc, char** argv){
@@ -185,14 +211,8 @@ int main(int argc, char** argv){
 	
 	a.imprimir();
 	
-	
-	
-
-	
-		
+	a.busca(6);
 
 
-
-	
 	return 0;
 }
